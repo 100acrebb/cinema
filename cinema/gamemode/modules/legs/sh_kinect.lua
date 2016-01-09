@@ -29,7 +29,8 @@ else //CLIENT
 end
 
 net.Receive("cinema_querykinect", function(length, ply)
-	if IsValid( ply ) && !IsValid( ply.rag ) then
+	if IsValid( ply ) then
+
 		ply.rag = ents.Create("prop_ragdoll")
 		ply.rag:SetModel( ply:GetModel() )
 		ply.rag:SetPos( ply:GetPos() + ply:GetViewOffset() )

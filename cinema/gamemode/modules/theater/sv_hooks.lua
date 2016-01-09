@@ -89,7 +89,15 @@ function GM:PrePlayerEnterTheater( ply, Theater )
 		return false
 
 	end
+
+	
 */
+
+	if Theater:IsBooted(ply) then -- MTZ
+		ULib.tsayError( ply, "You have been booted from this theater.", true ) 
+		ply:Spawn()
+		return false
+	end
 
 	return true
 

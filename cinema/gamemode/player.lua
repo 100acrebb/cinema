@@ -183,8 +183,14 @@ function GM:PlayerCanSeePlayersChat( strText, bTeamOnly, pListener, pSpeaker )
 		return true
 	end
 	
+	-- mtz, handle BuzzSay (console speak)
+	if (pSpeaker.GetTheater == null) then
+		return true
+	end
+	
 	-- Players should only receive chat messages from users in the same 
 	-- theater if it wasn't global.
+	
 	return pSpeaker:GetTheater() == pListener:GetTheater()
 	
 end

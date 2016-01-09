@@ -4,7 +4,7 @@ CreateConVar( "cinema_queue_mode", 1, { FCVAR_ARCHIVE, FCVAR_DONTRECORD, FCVAR_R
 if CLIENT then
 
 	CreateClientConVar( "cinema_drawnames", 1, true, false )
-	CreateClientConVar( "cinema_volume", 25, true, false )
+	CreateClientConVar( "cinema_volume", 50, true, false )
 	CreateClientConVar( "cinema_hd", 0, true, false )
 	CreateClientConVar( "cinema_resolution", 720, true, false )
 	local MuteNoFocus = CreateClientConVar( "cinema_mute_nofocus", 1, true, false )

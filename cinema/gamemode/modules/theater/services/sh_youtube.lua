@@ -152,6 +152,11 @@ function SERVICE:GetVideoInfo( data, onSuccess, onFailure )
 			local durStr = table.Lookup( item, 'contentDetails.duration', '' )
 			info.duration = convertISO8601Time( durStr )
 		end
+		
+		local ytRating = table.Lookup( item, 'contentDetails.contentRating.ytRating', '')
+		if ytRating == "ytAgeRestricted" then
+			return onFailure( 'Theater_RequestRestricted' )
+		end
 
 		if onSuccess then
 			pcall(onSuccess, info)

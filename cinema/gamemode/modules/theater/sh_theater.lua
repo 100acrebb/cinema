@@ -29,6 +29,7 @@ function THEATER:Init( locId, info )
 
 		o.Players = {}
 		o.Playlist = {}
+		o._BootedPlayers = {} -- MTZ
 
 		o._Video = nil
 
@@ -127,6 +128,10 @@ function THEATER:SetVideo( Video, PreventDefault )
 
 		self:SendVideo()
 
+	end
+	
+	if CLIENT then
+		notification.AddLegacy( self:Name().. " : " ..self:VideoTitle() ,  0, 5 ) 
 	end
 
 end
@@ -248,6 +253,7 @@ if SERVER then
 		if self:IsPrivate() then
 			self._QueueLocked = false
 			self._Owner = nil
+			self._BootedPlayers = {} -- MTZ
 		end
 
 		self:PlayDefault()
@@ -479,7 +485,8 @@ if SERVER then
 
 			-- Used for logging video requests
 			hook.Run( "PostVideoQueued", vid, self )
-
+			ServerLog('"'..ply:Nick()..'<1><'..ply:SteamID()..'><Team>" queuedname "'..vid:Title()..'"\n') 
+			ServerLog('"'..ply:Nick()..'<1><'..ply:SteamID()..'><Team>" queuedurl "'..url..'"\n') 
 		end )
 
 		if IsValid(ply) then
@@ -815,6 +822,29 @@ if SERVER then
 	function THEATER:ResetOwner()
 		self._Owner = nil
 		self._QueueLocked = false
+		self._BootedPlayers = {} -- MTZ
+	end
+	
+	function THEATER:AddBootedPlayer(ply)  -- MTZ
+		self._BootedPlayers[ply:SteamID()] = true
+		
+		print ("Add", self._Name)
+		PrintTable(self._BootedPlayers)
+	end
+	
+	function THEATER:RemoveBootedPlayer(ply)  -- MTZ
+		self._BootedPlayers[ply:SteamID()] = false
+		
+		print ("Remove", self._Name)
+		PrintTable(self._BootedPlayers)
+	end
+	
+	function THEATER:IsBooted(ply)  -- MTZ
+	
+		--print ("IsBooted", self._Name)
+		--PrintTable(self._BootedPlayers)
+
+		return (self._BootedPlayers[ply:SteamID()] == true)
 	end
 
 	function THEATER:RequestOwner( ply )

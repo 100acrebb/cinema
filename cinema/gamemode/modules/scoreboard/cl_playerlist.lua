@@ -237,7 +237,7 @@ function PLAYER:Paint( w, h )
 
 	surface.SetDrawColor( 255, 255, 255, 255 )
 
-	if self.Player.IsPixelTail && self.Player:IsPixelTail() then
+	--[[if self.Player.IsPixelTail && self.Player:IsPixelTail() then
 
 		surface.SetMaterial( PixeltailIcon )
 		surface.DrawTexturedRect( self.Name.x + self.Name:GetWide() + 5, self.Name.y + 3, 40, 16 )
@@ -247,7 +247,7 @@ function PLAYER:Paint( w, h )
 		surface.SetMaterial( AdminIcon )
 		surface.DrawTexturedRect( self.Name.x + self.Name:GetWide() + 5, self.Name.y + 3, 40, 16 )
 
-	end
+	end]]
 	
 end
 

@@ -22,6 +22,7 @@ LANG.Theater_InvalidRequest         = "Invalid video request."
 LANG.Theater_AlreadyQueued          = "The requested video is already in the queue."
 LANG.Theater_ProcessingRequest      = C("Processing ",ColHighlight,"%s",ColDefault," request...")
 LANG.Theater_RequestFailed          = "There was a problem processing the requested video."
+LANG.Theater_RequestRestricted      = "Unable to play age-restricted video."
 LANG.Theater_Voteskipped            = "The current video has been voteskipped."
 LANG.Theater_ForceSkipped           = C(ColHighlight,"%s",ColDefault," has forced to skip the current video.")
 LANG.Theater_PlayerReset            = C(ColHighlight,"%s",ColDefault," has reset the theater.")

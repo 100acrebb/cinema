@@ -60,7 +60,7 @@ function PLAYER:Loadout()
 
 	self.Player:RemoveAllAmmo()
 	self.Player:SwitchToDefaultWeapon()
-
+	self.Player:Give("weapon_popcorn") 
 end
 
 --
