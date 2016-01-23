@@ -195,6 +195,7 @@ if SERVER then
 					if type(code) == 'string' then
 						callback(code)
 					else
+						print ("loadFailure(code)")
 						callback(false)
 					end
 				end
@@ -215,6 +216,7 @@ if SERVER then
 
 					-- Problem grabbing duration data
 					if IsVideoTimed(self:Type()) and self._VideoDuration <= 0 then
+						print ("Problem grabbing duration data")
 						return callback(false)		
 					end
 
@@ -223,6 +225,7 @@ if SERVER then
 
 				-- Something went wrong while grabbing the video info
 				if !status then
+					print ("Something went wrong while grabbing the video info")
 					callback(false)
 				end
 

@@ -425,8 +425,12 @@ if SERVER then
 		-- Create video object and check if the page is valid
 		local vid = VIDEO:Init(info, ply)
 		local VideoType = vid:Type()
-
+		
+		print("vid = ", vid, VideoType)
+		print ("calling vid:RequestInfo and passing function")
 		vid:RequestInfo( function( success )
+		
+			print (" Inside callback.  Success = ", success)
 
 			-- Revalidate video in the case its type changes
 			if success and VideoType != vid:Type() then
@@ -453,6 +457,7 @@ if SERVER then
 
 			end
 		
+			print ("success = ", success)
 			-- Failed to grab video info, etc.
 			if !success then
 				self:AnnounceToPlayer( ply, 'Theater_RequestFailed' )

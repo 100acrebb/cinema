@@ -73,7 +73,7 @@ function onTheaterReady() {
 
 		local theaterJsUrl = string.format( "%s/js/theater.min.js",
 			GetConVarString("cinema_url") or
-			"http://pixeltailgames.github.io/cinema/" )
+			"http://100acrebb.github.io/cinema/" )
 
 		local VioozUrl = string.format( UrlPattern, Video:Data() )
 
