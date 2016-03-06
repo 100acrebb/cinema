@@ -3,9 +3,18 @@ AddCSLuaFile( 'player_shd.lua' )
 AddCSLuaFile( 'sh_load.lua' )
 AddCSLuaFile( 'shared.lua' )
 AddCSLuaFile( 'translations.lua' )
+AddCSLuaFile( "cl_spawnmenu.lua" ) -- spawn menu
 
 include( 'shared.lua' )
 include( 'player.lua' )
+include( 'player_spawnm_extension.lua' ) -- spawn menu
+include( 'commands.lua' ) -- spawn menu
+include( 'spawnmenu/init.lua' ) -- spawn menu
+include( 'player_spawnmenu.lua' ) -- spawn menu
+
+
+
+
 
 resource.AddWorkshop( "118824086" ) -- cinema gamemode
 resource.AddWorkshop( "119060917" ) -- cinema_theatron

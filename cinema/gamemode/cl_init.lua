@@ -3,6 +3,7 @@ ColDefault = Color( 200, 200, 200 )
 ColHighlight = Color( 158, 37, 33 )
 
 include( 'shared.lua' )
+include( 'cl_spawnmenu.lua' ) -- spawn menu
 
 --[[
 	Unsupported Notifications
