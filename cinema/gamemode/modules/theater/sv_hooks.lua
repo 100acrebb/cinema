@@ -93,8 +93,21 @@ function GM:PrePlayerEnterTheater( ply, Theater )
 	
 */
 
+	if Theater:IsTHABStaffOnly() and !(ply.CheckGroup and ply:CheckGroup("moderator")) then
+		ULib.tsayError( ply, "Sorry, this theater is reserved for THAB Staff only.", true ) 
+		ply:Spawn()
+		return false
+	end
+	
+	if Theater:IsTHABMembersOnly() and !ply:GetNWBool( "THABMember", false ) then
+		ULib.tsayError( ply, "Sorry, this theater is reserved for THAB Steam Group members only.", true ) 
+		ply:Spawn()
+		return false
+	end
+
 	if Theater:IsBooted(ply) then -- MTZ
-		ULib.tsayError( ply, "You have been booted from this theater.", true ) 
+		ULib.tsayError( ply, "You have been booted from this theater by the theater owner.", true ) 
+		print(ply, "BOOTED!")
 		ply:Spawn()
 		return false
 	end

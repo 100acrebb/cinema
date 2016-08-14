@@ -280,7 +280,7 @@ function DoPlayerEntitySpawn( player, entity_name, model, iSkin, strBody )
 	return ent
 
 end
-concommand.Add( "gm_spawn", CCSpawn, nil, "Spawns props/ragdolls" )
+-- concommand.Add( "gm_spawn", CCSpawn, nil, "Spawns props/ragdolls" )
 
 local function InternalSpawnNPC( Player, Position, Normal, Class, Equipment )
 
@@ -462,7 +462,7 @@ function Spawn_NPC( player, NPCClassName, WeaponName, tr )
 	player:SendLua( "achievements.SpawnedNPC()" )
 
 end
-concommand.Add( "gmod_spawnnpc", function( ply, cmd, args ) Spawn_NPC( ply, args[ 1 ], args[ 2 ] ) end )
+-- concommand.Add( "gmod_spawnnpc", function( ply, cmd, args ) Spawn_NPC( ply, args[ 1 ], args[ 2 ] ) end )
 
 local function GenericNPCDuplicator( Player, Model, Class, Equipment, SpawnFlags, Data )
 
@@ -674,7 +674,7 @@ function Spawn_SENT( player, EntityName, tr )
 	end
 
 end
-concommand.Add( "gm_spawnsent", function( ply, cmd, args ) Spawn_SENT( ply, args[ 1 ] ) end )
+-- concommand.Add( "gm_spawnsent", function( ply, cmd, args ) Spawn_SENT( ply, args[ 1 ] ) end )
 
 --[[---------------------------------------------------------
 	-- Give a swep.. duh.
@@ -705,7 +705,7 @@ function CCGiveSWEP( player, command, arguments )
 	player:SelectWeapon( swep.ClassName )
 
 end
-concommand.Add( "gm_giveswep", CCGiveSWEP )
+-- concommand.Add( "gm_giveswep", CCGiveSWEP )
 
 --[[---------------------------------------------------------
 	-- Give a swep.. duh.
@@ -747,7 +747,7 @@ function Spawn_Weapon( Player, wepname, tr )
 	end
 
 end
-concommand.Add( "gm_spawnswep", function( ply, cmd, args ) Spawn_Weapon( ply, args[1] ) end )
+-- concommand.Add( "gm_spawnswep", function( ply, cmd, args ) Spawn_Weapon( ply, args[1] ) end )
 
 local function MakeVehicle( Player, Pos, Ang, Model, Class, VName, VTable, data )
 
@@ -845,7 +845,7 @@ function Spawn_Vehicle( Player, vname, tr )
 	Player:AddCleanup( "vehicles", Ent )
 
 end
-concommand.Add( "gm_spawnvehicle", function( ply, cmd, args ) Spawn_Vehicle( ply, args[1] ) end )
+-- concommand.Add( "gm_spawnvehicle", function( ply, cmd, args ) Spawn_Vehicle( ply, args[1] ) end )
 
 local function VehicleMemDupe( Player, Entity, Data )
 

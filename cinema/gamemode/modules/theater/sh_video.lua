@@ -193,6 +193,8 @@ if SERVER then
 
 				local function loadFailure(code)
 					if type(code) == 'string' then
+						print ("Getting a loadfailure code")
+						print(code)
 						callback(code)
 					else
 						print ("loadFailure(code)")
@@ -232,6 +234,7 @@ if SERVER then
 			end
 
 		else
+			print("never got out of the gate!")
 			callback(false)
 		end
 

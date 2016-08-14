@@ -23,7 +23,7 @@ end
 -----------------------------------------------------------]]
 local function LimitReachedProcess( ply, str )
 
-	ErrorNoHalt( "Inside LimitReachedProcess\n" )
+	--ErrorNoHalt( "Inside LimitReachedProcess\n" )
 	if ( !IsValid( ply ) ) then return true end
 
 	return ply:CheckLimit( str )
@@ -47,8 +47,8 @@ end
    Desc: Return true if it's allowed 
 -----------------------------------------------------------]]
 function GM:PlayerSpawnProp( ply, model )
-	print("here I am")
-	ErrorNoHalt( "Inside PlayerSpawnProp\n" )
+
+	--ErrorNoHalt( "Inside PlayerSpawnProp\n" )
 	return LimitReachedProcess( ply, "props" )
 
 end

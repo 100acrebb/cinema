@@ -17,6 +17,10 @@ function THEATER:Init( locId, info )
 
 	o._Width = info.Width or 128
 	o._Height = info.Height or math.Round(o._Width * (9/16))
+	
+	o._THABStaffOnly = info.THABStaffOnly or false
+	o._THABMembersOnly = info.THABMembersOnly or false
+	
 
 	if SERVER then
 
@@ -102,6 +106,14 @@ end
 
 function THEATER:IsReplicated()
 	return bit.band(self._Flags, THEATER_REPLICATED) == THEATER_REPLICATED
+end
+
+function THEATER:IsTHABStaffOnly()
+	return self._THABStaffOnly
+end
+
+function THEATER:IsTHABMembersOnly()
+	return self._THABMembersOnly
 end
 
 /*
@@ -828,26 +840,27 @@ if SERVER then
 		self._Owner = nil
 		self._QueueLocked = false
 		self._BootedPlayers = {} -- MTZ
+		print ("Reset", self._Name)
 	end
 	
 	function THEATER:AddBootedPlayer(ply)  -- MTZ
 		self._BootedPlayers[ply:SteamID()] = true
 		
-		print ("Add", self._Name)
+		print ("Add", self._Name, ply)
 		PrintTable(self._BootedPlayers)
 	end
 	
 	function THEATER:RemoveBootedPlayer(ply)  -- MTZ
 		self._BootedPlayers[ply:SteamID()] = false
 		
-		print ("Remove", self._Name)
+		print ("Remove", self._Name, ply)
 		PrintTable(self._BootedPlayers)
 	end
 	
 	function THEATER:IsBooted(ply)  -- MTZ
 	
-		--print ("IsBooted", self._Name)
-		--PrintTable(self._BootedPlayers)
+		print ("IsBooted", self._Name, ply)
+		PrintTable(self._BootedPlayers)
 
 		return (self._BootedPlayers[ply:SteamID()] == true)
 	end

@@ -8,7 +8,7 @@ g_SBoxObjects = {}
 
 function meta:CheckLimit( str )
 
-	ErrorNoHalt( "Checking limits", str, "\n" )
+	--ErrorNoHalt( "Checking limits", str, "\n" )
 	-- No limits in single player
 	if (game.SinglePlayer()) then return true end
 	
@@ -21,8 +21,8 @@ function meta:CheckLimit( str )
 	local c = cvars.Number( "sbox_max"..str, 0 )
 	
 	if ( c < 0 ) then return true end
-	ErrorNoHalt( c, "\n" )
-	ErrorNoHalt( self:GetCount( str ), "\n" )
+	--ErrorNoHalt( c, "\n" )
+	--ErrorNoHalt( self:GetCount( str ), "\n" )
 	if ( self:GetCount( str ) > c-1 ) then self:LimitHit( str ) return false end
 
 	return true

@@ -75,6 +75,8 @@ function GetByLocation( locId, setup )
 
 		-- Valid theater info
 		if info then
+			if (loc.THABStaffOnly) then info.THABStaffOnly = loc.THABStaffOnly end
+			if (loc.THABMembersOnly) then info.THABMembersOnly = loc.THABMembersOnly end
 			Theater = THEATER:Init(locId, info)
 			Theaters[locId] = Theater
 		end
