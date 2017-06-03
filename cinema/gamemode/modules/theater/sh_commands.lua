@@ -6,6 +6,7 @@ if CLIENT then
 	CreateClientConVar( "cinema_drawnames", 1, true, false )
 	CreateClientConVar( "cinema_volume", 50, true, false )
 	CreateClientConVar( "cinema_hd", 0, true, false )
+	CreateClientConVar( "cinema_cc", 0, true, false )
 	CreateClientConVar( "cinema_resolution", 720, true, false )
 	local MuteNoFocus = CreateClientConVar( "cinema_mute_nofocus", 1, true, false )
 	local ScrollAmount = CreateClientConVar( "cinema_scrollamount", 60, true, false )
@@ -89,17 +90,21 @@ if CLIENT then
 	hook.Add( "PrePlayerDraw", "TheaterHidePlayers", function( ply )
 
 		-- Local player in a theater and hide players enabled
-		if HidePlayers:GetBool() and LocalPlayer():InTheater() then
+		if LocalPlayer():InTheater() then
+			if theater.Fullscreen then 
+				return true
+			end
+				
+			if HidePlayers:GetBool() then
+				amount = HideAmount:GetFloat()
 
-			amount = HideAmount:GetFloat()
+				-- Hide model
+				render.SetBlend( amount )
+				render.ModelMaterialOverride(matWhite)
+				render.SetColorModulation(0.2, 0.2, 0.2)
 
-			-- Hide model
-			render.SetBlend( amount )
-			render.ModelMaterialOverride(matWhite)
-			render.SetColorModulation(0.2, 0.2, 0.2)
-
-			undomodelblend = true
-
+				undomodelblend = true
+			end
 		end
 
 	end )
@@ -242,8 +247,7 @@ else
 			if Theater then
 
 				if ply:IsAdmin() or
-					( Theater:IsPrivate() and Theater:GetOwner() == ply ) or
-					( ply.IsPixelTail && ply:IsPixelTail() ) then
+					( Theater:IsPrivate() and Theater:GetOwner() == ply ) then
 
 					local status, err = pcall(Function, Theater, ply, ...)
 
